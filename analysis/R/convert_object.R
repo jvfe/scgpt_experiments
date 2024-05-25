@@ -4,11 +4,21 @@ library(sceasy)
 
 use_condaenv("sceasy")
 
-load("sc_qc_GSM5102900_SCT_clusters.rda")
+harmony <- readRDS("data/harmony_integration.rds")
 
-sce <- as.SingleCellExperiment(sc_qc_GSM5102900_sct)
+convertFormat(harmony, from="sce", to="anndata", outFile='data/harmony.h5ad')
 
-convertFormat(sce, from="sce", to="anndata", outFile='sce.h5ad')
+cca <- readRDS("data/cca_integration.rds")
+
+convertFormat(cca, from="sce", to="anndata", outFile='data/cca.h5ad')
+
+rpca <- readRDS("data/rpca_integration.rds")
+
+convertFormat(rpca, from="sce", to="anndata", outFile='data/rpca.h5ad')
+
+jointpca <- readRDS("data/jointpca_integration.rds")
+
+convertFormat(jointpca, from="sce", to="anndata", outFile='data/jointpca.h5ad')
 
 blood_atlas <- readRDS("blood_atlas_with_symbols.rds")
 blood_atlas[["RNA"]] <- as(blood_atlas[["RNA"]], Class="Assay")
