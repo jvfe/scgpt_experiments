@@ -4,19 +4,19 @@ library(sceasy)
 
 use_condaenv("sceasy")
 
-harmony <- readRDS("data/harmony_integration.rds")
+harmony <- as.SingleCellExperiment(readRDS("data/harmony_annotated.rds"))
 
 convertFormat(harmony, from="sce", to="anndata", outFile='data/harmony.h5ad')
 
-cca <- readRDS("data/cca_integration.rds")
+cca <- as.SingleCellExperiment(readRDS("data/cca_annotated.rds"))
 
 convertFormat(cca, from="sce", to="anndata", outFile='data/cca.h5ad')
 
-rpca <- readRDS("data/rpca_integration.rds")
+rpca <- as.SingleCellExperiment(readRDS("data/rpca_annotated.rds"))
 
 convertFormat(rpca, from="sce", to="anndata", outFile='data/rpca.h5ad')
 
-jointpca <- readRDS("data/jointpca_integration.rds")
+jointpca <- as.SingleCellExperiment(readRDS("data/jointpca_annotated.rds"))
 
 convertFormat(jointpca, from="sce", to="anndata", outFile='data/jointpca.h5ad')
 
